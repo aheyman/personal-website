@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
+import NavBar from './js/component/navBar';
+import Base from './js/scenes/index';
 
-function App() {
+
+const styles = {
+
+};
+
+
+const App = (props) => {
+  const { classes } = props;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className={classes.appBar}>
+        <NavBar />
+      </div>
+      <div className={classes.appBody}>
+        <Base props={props} />
+      </div>
     </div>
   );
-}
+};
 
-export default App;
+const mapStateToProps = state => ({
+  ...state,
+});
+
+export default connect(mapStateToProps)(withStyles(styles)(App));
