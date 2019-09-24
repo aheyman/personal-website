@@ -6,7 +6,7 @@ import {
 const styles = theme => ({
   card: {
     padding: theme.spacing(2),
-    margin: theme.spacing(1),
+    margin: theme.spacing(2),
     width: '50%',
     [theme.breakpoints.down('sm')]: {
       width: '80%',
@@ -15,19 +15,7 @@ const styles = theme => ({
   },
   cardTitle: {
     fontSize: '1.25rem',
-  },
-  cardCompany: {
-    fontSize: '1.10rem',
-    color: theme.palette.text.secondary,
-  },
-  cardDates: {
-    fontSize: '1rem',
-    fontStyle: 'italic',
-    color: theme.palette.text.secondary,
-  },
-  cardDescription: {
-    fontsize: '1rem',
-    color: theme.palette.text.primary,
+    fontWeight: 'bold',
   },
   media: {
     padding: theme.spacing(2),
@@ -39,10 +27,12 @@ const styles = theme => ({
   },
 });
 
-const workItem = (props) => {
+const education = (props) => {
   const {
-    title, startDate, endDate, description, location, company, classes, img,
+    school, degree, classes, img,
   } = props;
+
+  const degrees = degree.map(x => <Typography>{x}</Typography>);
 
   return (
     <Box display="flex" flexWrap="wrap" justifyContent="center" direction="row" alignItems="center">
@@ -50,21 +40,9 @@ const workItem = (props) => {
       <Card className={classes.card}>
         <CardContent>
           <Typography className={classes.cardTitle}>
-            {title}
+            {school}
           </Typography>
-          <Typography className={classes.cardCompany}>
-            {company}
-            {' - '}
-            {location}
-          </Typography>
-          <Typography className={classes.cardDates}>
-            {startDate}
-            {' - '}
-            {endDate}
-          </Typography>
-          <Typography className={classes.cardDescription}>
-            {description}
-          </Typography>
+          {degrees}
         </CardContent>
       </Card>
     </Box>
@@ -72,4 +50,4 @@ const workItem = (props) => {
 };
 
 
-export default withStyles(styles)(workItem);
+export default withStyles(styles)(education);

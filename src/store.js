@@ -9,6 +9,9 @@ const initialState = {
   navigation: {
     activePage: 'HOME',
   },
+  home: {
+    spin: false,
+  },
 };
 
 const store = createStore(rootReducer, initialState, storeEnhancers(applyMiddleware(thunk)));
